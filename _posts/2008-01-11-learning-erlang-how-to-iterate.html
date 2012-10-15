@@ -1,0 +1,21 @@
+---
+layout: post
+title: Learning Erlang – How to iterate
+published: 1
+categories:
+  - Code
+  - Erlang
+---
+<p>One of my goals this year is to learn <a href="http://www.erlang.org/">Erlang</a>, a surprisingly old-but-new programming language that seems rather well-suited to "cloud computing". <a href="http://couchdb.org/">CouchDB</a> is being written in Erlang, as is <a href="http://www.satine.org/archives/2007/12/13/amazon-simpledb/">Amazon SimpleDB</a> behind the scenes.</p>
+
+<p>But... if you thought Ruby and Python code looks strange, look out! Erlang is a purely functional language.  Unless you're comfortable with Scheme/Lisp, it will look <em>very</em> alien at first. No wonder some high-profile hackers are giving it a weekend spin and ending in <a href="http://www.tbray.org/ongoing/When/200x/2007/09/21/Erlang">frustration</a>. I finished Chapter 3 in Joe Armstrong's book, the last he talks about sequential programming, and thought I'd try to write something straightforward – like a <a href="http://www.timestretch.com/FractalBenchmark.html">fractal generator</a>. Fat chance: I got stuck <strong>counting from 1 to 10!</strong></p>
+
+<p>After sleeping on it, I realized I knew <em>about</em> recursion, but I hadn't imagined life when that was the <em>only</em> looping construct. And I wished I hadn't skipped <a href="http://www.cs.cornell.edu/courses/cs312/2007sp/">that Scheme class</a> in college! (I was EE, not CS.)</p>
+
+<p>After another night's sleep, I decided to start by writing simple loops, printing 1 to 10, in as many ways as possible in Erlang. So far I've found seven variations, ranging from simple to unusual (Y combinator?). Here's the result so far. I'll be updating this as I learn more...</p>
+
+<p><a href="http://p16blog.googlecode.com/svn/trunk/learning_erlang/demo_counting.erl">demo_counting.erl</a></p>
+
+<p>PS: Someone needs to write a book called "Getting Things Done In Erlang", mimicing the structure of the Camel or Pickaxe book. Theory-first approaches won't cut it for the working-programmer crowd.</p>
+
+

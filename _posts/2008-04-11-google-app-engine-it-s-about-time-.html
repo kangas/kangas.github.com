@@ -1,0 +1,27 @@
+---
+layout: post
+title: Google App Engine. It's about time.
+published: 1
+categories:
+  - Google
+  - WebDev
+---
+<p>The big web-geek announcement this week was <a href="http://code.google.com/appengine/">Google App Engine</a>. Lordy, does this ever look neat. I like <a href="http://blogs.smugmug.com/don/2008/04/08/thoughts-on-google-appengine/">Don MacAskill's take</a> the best:</p>
+
+<blockquote>
+  <p>I think it’s interesting that Google has basically taken a sniper scope out and aimed it at a specific cloud computing target.  App Engine is only for web applications.  No batch computing, no cron jobs, no CPU/disk/network access, etc.  </p>
+  
+  <p>I think this is very smart of Google.  Rather than attacking Amazon head-on, Google has realized there’s a huge playing field for cloud computing, and are attempting to dominate another portion of it, one where they have a lot of expertise.  Very good business move, imho.</p>
+</blockquote>
+
+<p>I use Amazon EC2 -- their "cloud computing" solution" -- for some peripheral tasks at <a href="http://flix55.com/">Flix55.com</a>, and I like it a lot. But building a web app that can dynamically grow/shrink the number of nodes it's using -- that's hard, but it's also necessary to fully exploit Amazon's rent-a-server-by-the-hour pricing model.</p>
+
+<p>App Engine promises to give you dynamic front-end scalability for free. Better yet, if the site has only modest traffic and data requirements, it's hosted completely free.</p>
+
+<p>Gotchas? <em>Oh Yeah!</em> ... No pricing model for real traffic &amp; storage levels yet. No SLA yet. Must use Python to develop your app (but I like Python). You have a funky datastore that doesn't allow joins, not an RDBMS. The list goes on...</p>
+
+<p>But. Still. It's <em>cheap cheap</em> and hacker-friendly. It looks fantastic for solo-developer projects that are really experimental and may/may-not be the next big thing. This is also just Google's starting point for the service. Like EC2, it will get better in time.</p>
+
+<p>I have plenty of hare-brained web ideas that I can't economically justify building even on EC2. Now, thanks to Google, it might be worth giving them a spin.  I've already signed up... awaiting my trial account now. :)</p>
+
+

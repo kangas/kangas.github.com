@@ -1,0 +1,58 @@
+---
+layout: post
+title: Madcap idea #2&#58; "Remote &lt;canvas&gt; Protocol"
+published: 1
+category:
+  - Madcap
+---
+<p>Now that I'm writing in public, it feels like I have a backlog of ideas I need to spit out. Here's another of those "noteboook ideas". It pre-dates my <a href="/p16/2008/01/madcap-idea-fun.html">"Func-y JS" idea</a>, but stems from the same "trends in hacking" meme.</p>
+
+<p>Say you want to write a client/server GUI application with as little logic as possible on the client. Traditionally, this means: <a href="http://en.wikipedia.org/wiki/X_Window_System">X-Windows</a>,  <a href="http://en.wikipedia.org/wiki/Vnc">VNC</a>, <a href="http://en.wikipedia.org/wiki/Remote_Desktop_Connection">Windows RDC</a>, or other <a href="Comparison_of_remote_desktop_software">Remote Desktop Software</a>. Some of these are OS-specific (Windows, Unix). All of these assume that the server authenticates the user before the app is used.</p>
+
+<p>Informally speaking, the server "knows who the user is" before the app can be seen or used.</p>
+
+<p>Contrast this with the web world. Web apps are supposed to be OS-agnostic, and nominally open for "public" usage. Anyone who's built a web storefront, and watched their conversion rates, knows that requiring a user to register prior to checking out means many lost sales. Users don't like to authenticate first for anything, even when their credit card is involved.</p>
+
+<p>So how can we combine the web's "anybody is welcome" ethos with a full client/server GUI. AJAX is one approach. But what if we really want <em>all</em> logic on the server, ala X-Windows? Why might we want this?</p>
+
+<ul>
+<li>Minimizing client code -> minimizing cross-platform workarounds</li>
+<li>One client -> multiple apps</li>
+<li>Option to insert advertising into the app (free, yet monetized)</li>
+<li>Multi-user experience</li>
+</ul>
+
+<p>Games are sort of an obvious candidate here, but keep client/server latency in mind as a design constraint. A first-person shooter like "Doom" probably won't work with ~70ms latency and all logic on the server. On the other hand, a turn-based game like <a href="http://www.scrabulous.com/">Scrabulous</a> might work very nicely.</p>
+
+<p>How is Scrabulous implemented today?</p>
+
+<ul>
+<li><a href="http://www.scrabulous.com/solitaire_scrabble.php">Standalone</a>: Java</li>
+<li><a href="http://apps.facebook.com/scrabulous/">Facebook app</a>: either FBML or external html... only options Facebook provides</li>
+<li>They also have an "email-based" game</li>
+</ul>
+
+<p>I was writing Scrabulous, I'd hate to implement the same game 2, 3, or more times. Can we unify these approaches somehow?</p>
+
+<p><strong>Madcap Idea: "Remote &lt;canvas&gt; Protocol"</strong></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Canvas_%28HTML_element%29">&lt;canvas&gt;</a> is an HTML element introduced by Safari, now supported in Firefox and part of HTML5. It's possible to emulate &lt;canvas&gt; in Internet Explorer without plugins – Google does this today on Google Maps.</p>
+
+<p>Per Wikipedia:</p>
+
+<blockquote>
+  <p>Canvas consists of a drawable region defined in HTML code with height and width attributes. JavaScript code may access the area through a full set of drawing functions similar to other common 2D APIs, thus allowing for dynamically generated graphics. Some anticipated uses of the canvas include building graphs, animations, games, and image composition.</p>
+</blockquote>
+
+<p>Sweet! It's a simple but full-blown 2D API, already cross-platform and standardized. But it's accessible only to client-side JavaScript. How do we move our "application logic" to the server? Write a small bit of client-side JavaScript that:</p>
+
+<ul>
+<li>Opens one <a href="http://en.wikipedia.org/wiki/Xmlhttprequest">XMLHttpRequest</a> to the server</li>
+<li>Read <a href="http://developer.mozilla.org/en/docs/Canvas_tutorial">rendering commands</a> from here and relay to the canvas</li>
+<li>Set event handlers to capture user clicks &amp; keystrokes on the canvas</li>
+<li>Relay user clicks &amp; keystrokes back to the server over a 2nd XMLHttpRequest, or the first one if that's possible</li>
+</ul>
+
+<p>Gee, that sounds pretty simple. Can this possibly work? I may have to throw together a proof-of-concept to find out. :-)</p>
+
+

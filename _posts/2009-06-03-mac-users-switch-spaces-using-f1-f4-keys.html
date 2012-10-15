@@ -1,0 +1,72 @@
+---
+layout: post
+title: Mac users&#58; Switch "Spaces" using F1-F4 keys
+published: 1
+category:
+  - Mac
+---
+<p>Hola! It's been a while since I've posted anything here. Since January I've been largely occupied with:<br />
+<ul><br />
+<li>Getting married<br />
+<li>spending way too much time at work tuning MySQL databases<br />
+</ul></p>
+
+<p>I plan to write about those topics... well, soon. :) Today, I just have a tip for Mac folks who use Leopard's "Spaces" feature.</p>
+
+<h2>Switch directly to a "Space" using function keys</h2>
+
+<p>Apple added <a href="http://www.apple.com/macosx/features/spaces.html">Spaces</a> as part of OS X 10.5 "Leopard", and hacker types have been <a href="http://blogs.sun.com/bblfish/entry/why_apple_spaces_is_broken">criticizing it</a> <a href="http://theappleblog.com/2008/09/25/alternatives-to-apple-spaces/">ever since.<br />
+</a> But I'm already too old to care about customizing the heck out of my desktop. I'd rather have something that works by default, and Spaces largely works.</p>
+
+<p>Spaces lets you to define N virtual desktops, and to switch to each desktop via "<strong>&lt;modifier&gt;-N</strong>", where <strong>N=[1-9]</strong> and <strong>&lt;modifier&gt;</strong> is one of (<em>ctrl,command,option</em>). This is a pretty good way to do things by default; it's flexible, and doesn't conflict with other apps.</p>
+
+<p>I've also had intermittent RSI problems for years. Unfortunately for me, pressing any key-combination hundreds of times a day is bad for my hands. I'd rather make it a single keystroke, so my hands don't have to perform gymnastics on such a regular basis.</p>
+
+<p>I haven't found a <em>clean</em> answer yet. But I do have a dirty hack that works.</p>
+
+<h3>1. Download <a href="http://proxi.griffintechnology.com/">Proxi</a> from Griffin Technology.</h3>
+
+<p>It's a free app which helps you customize how your Mac responds to input devices -- keyboard, mouse and other controllers like Griffin's <a href="http://proxi.griffintechnology.com/">Powermate</a> and <a href="http://www.griffintechnology.com/products/airclickusb/">AirClick</a>. (Don't have 'em, but I think they are nifty :)</p>
+
+<h3>2. Start Proxi and define some Triggers</h3>
+
+<p>I use 4 "spaces", so I define four triggers in Proxi. One for each space, mapping:<br />
+<ul><br />
+<li> F1 to Space #1<br />
+<li> F2 to Space #2<br />
+<li> etc<br />
+</ul></p>
+
+<p>I chose F1-F4 because, well, I don't use them for anything else. I know F1 sometimes means "Help" and F4 sometimes means "Close Window". Those date from the old, PS/2-era <a href="http://en.wikipedia.org/wiki/Common_User_Access">IBM CUA guidelines</a>. But in practice, I never use these keys on a Mac.</p>
+
+<p>Open <em>System Preferences -> Spaces</em>. <strong>Unselect the "switch directly to a space" modifier key</strong>, but remember which one it was -- we'll use it below. (I use "option")</p>
+
+<p>Switch to Proxi and define some triggers, one for each space.<br />
+<ol><br />
+<li>Gear on bottom left: <em>"Insert trigger -> Hotkey Monitor"</em><br />
+<li>"Set" the hotkey. Click "Set" button, tap the F-key (F1 for Space 1)<br />
+<li>Gear, bottom middle: <em>"Insert task -> Key Press"</em><br />
+<li>"Set" it to your old direct-switch keystroke combo. (Option-1 for Space 1)<br />
+</ol></p>
+
+<p>Repeat for each space. When you're done,<br />
+<ul><br />
+<li>F1 should trigger "Option-1"<br />
+<li>F2 should trigger "Option-2"<br />
+<li>etc<br />
+</ul></p>
+
+<p>Go back to <em>System Preferences -> Spaces</em>. <strong>Re-enable the "switch directly to space" modifier key</strong>, setting it to "Option" or whatever modifier you used above.</p>
+
+<p>Now try pressing F1, then F2. You should see your Mac switching from Space 1 to Space 2!</p>
+
+<h3>3. Leave Proxi running</h3>
+
+<p>You'll probably want to go back to Proxi's Preferences and select "Start at Login". The triggers only work while Proxi is running, so don't close it.</p>
+
+<h3>Yeah, it's a hack...</h3>
+
+<p>Like I said earlier, this solution is somewhat hackish. A better solution would replace the "Key Press" task with a direct "Change Space" task, perhaps implemented via Applescript.</p>
+
+<p>Does anyone know how to improve this recipe? If so, please let me know!</p>
+

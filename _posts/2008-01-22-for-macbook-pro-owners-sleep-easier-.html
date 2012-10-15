@@ -1,0 +1,41 @@
+---
+layout: post
+title: For MacBook Pro Owners – Sleep Easier!
+published: 1
+category:
+  - Mac
+---
+<p>I'm working on some more Erlang stuff today, will post the results shortly. In the meantime, I wanted to share with you an excellent tip for MacBook Pro owners.</p>
+
+<p>I recently upgraded from a Powerbook G4 (Aluminum) to a spiffy new MacBook Pro. The new machine looks almost identical to the old one, and is blazingly fast in comparison. But after a month of usage, two things were really starting to bother me about it:</p>
+
+<ul>
+<li>After waking from sleep, sometimes the built-in keyboard and trackpad would be dead!</li>
+<li>Sometimes the machine seemed to have trouble going to sleep and rebooting. It could take several minutes, if it happened at all. It seemed to have trouble re-starting the UI after "Log Out" and would hang at spinning-wheel icon.</li>
+</ul>
+
+<p>I was starting to worry if I'd gotten a lemon. I had a G4 tower years ago that had weird intermittent USB problems, the kind that are impossible to demonstrate when you're asking for a warranty replacement. Argh. Maybe Apple was coming out with an OS update to fix this.</p>
+
+<p>After anxiously checking Software Update every day for a week, I started Googling and discovered, hurrah! – the solution was waiting for me in:</p>
+
+<ul>
+<li>Part 1: <a href="http://www.apple.com/support/downloads/macbookmacbookprosoftwareupdate11.html">Apple: MacBook, MacBook Pro Software Update 1.1</a></li>
+</ul>
+
+<p>Great! It's a known issue, and there's a firmware update! But this only solves the keyboard issue...</p>
+
+<ul>
+<li>Part 2: <a href="http://www.windley.com/archives/2007/10/fixing_macbook_pro_sleep_problems.shtml">Phil Windley: Fixing MacBook Pro Sleep Problems</a></li>
+</ul>
+
+<p>I always loved how the Powerbook G4 went to sleep <strong>instantly</strong>, and awoke in a flash. This article explains how <strong>sleep-mode works differently on Intel Macs</strong>, why it's different (by default), and how you can <strong>change it back</strong>.</p>
+
+<p>There is one BIG CAVEAT: you must use new default mode if you intend to change batteries without plugging into the wall. The G4 Powerbooks had a "last resort" power source that could keep RAM refreshed for a minute or so, even without the battery. Intel MacBooks don't have this.</p>
+
+<p>However, I don't own a spare battery, so I don't care. All I needed was one command:</p>
+
+<p><code>sudo pmset -a hibernatemode 0</code></p>
+
+<p>Hooray! My MBP now sleeps and wakes instantly, just like my beloved G4. Finally, I have a worthy successor to that machine. :-)</p>
+
+

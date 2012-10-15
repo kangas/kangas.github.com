@@ -1,0 +1,24 @@
+---
+layout: post
+title: User-added comments in the Erlang documentation?
+published: 1
+category:
+  - Erlang
+---
+<p>Here's a second idea for improving the <a href="http://erlang.org/doc/">Erlang documentation</a>, stemming again from a comparison to <a href="http://us.php.net/docs.php">PHP</a>.</p>
+
+<p>How about supporting user-added comments in the documentation? </p>
+
+<p>I'm talking about the little "add a note" button at the end of <a href="http://us.php.net/print_r">every page of the PHP manual</a>, and the stream of user-contributed "notes" that follows. Or as a friend suggested, look at PostgreSQL: their online manual is available <a href="http://www.postgresql.org/docs/8.3/interactive/index.html">with</a> and <a href="http://www.postgresql.org/docs/8.3/static/index.html">without</a> comments.</p>
+
+<p>Allowing comments is just as necessary for online technical manuals as for blogs. It's all about putting <a href="http://en.wikipedia.org/wiki/Linus's_Law">Linus's Law</a> into practice: <strong>"given enough eyeballs, all bugs are shallow"</strong>.</p>
+
+<p>Personally, I've spent a lot of time reading the PHP manual in the last 4 years. Even though the quality of the user-added notes varies greatly, I've always found the note-sections helpful, because I never read them <em>unless</em> my question isn't answered by the preceding manual page.</p>
+
+<p>You can think of inline notes as a way to <strong>accumulate FAQs (and answers) wherever they're needed</strong> within the official manual.</p>
+
+<p>My suggestion for implementing: don't bother to build a comment-handling framework, just borrow some existing framework. Not sure about PostgreSQL, but PHP has a <a href="http://doc.php.net/php/dochowto/index.php">documentation HOWTO</a>. Docbook XML is their core format.</p>
+
+<p>What's Erlang's core doc format? Could we just convert and pour Erlang docs into the PHP doc framework? It looks like <a href="http://www.erlang.org/doc/apps/docbuilder/index.html">DocBuilder</a> is how the HTML docs are generated... will have to dig into this later. :)</p>
+
+

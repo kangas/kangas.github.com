@@ -1,0 +1,18 @@
+---
+layout: post
+title: reblog&#58; "Anti-RDBMS&#58; A list of distributed key-value stores"
+published: 1
+categories:
+  - Datastore
+  - Scalable
+  - Web/Tech
+---
+<p>Here is a great overview of the current landscape of freely available distributed hashtables (DHTs), by one of the founders of Last.fm.</p>
+
+<p><a href="http://www.metabrew.com/article/anti-rdbms-a-list-of-distributed-key-value-stores/">Anti-RDBMS: A list of distributed key-value stores</a></p>
+
+<p>I've looked at several of <a href="/p16/2008/08/more-scalable-datastores-scalaris-nmdb.html">these</a> <a href="/p16/2008/08/reply-to-viktor-re-tokyo-cabinet-tyrant.html">systems</a> in the past, but was delighted to see coverage of even more recent developments like <a href="http://project-voldemort.com/">Project Voldemort</a> -- apparently used by LinkedIn.</p>
+
+<p>I still have a need for <em>some</em> system along these lines. My "excerpt server" BDBs are 120 GB and growing forever, with periodic bit-rot errors cropping up, necessitating reconciliation between replicas. I'd love to have a solution that I can throw more data+traffic at that <em>just works</em>.</p>
+
+

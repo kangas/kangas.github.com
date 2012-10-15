@@ -1,0 +1,18 @@
+---
+layout: post
+title: Two new scalability-enhancing projects to keep an eye on
+published: 1
+category:
+  - WebDev
+---
+<p>Hola! I hope everyone in the USA had a pleasant July 4th weekend. The weather in NYC was too overcast and drizzly to go to the beach, so I spent it bicycling around Brooklyn with my brother and some friends.</p>
+
+<p>Here are two newly-released open source projects that look quite interesting for building scalable web services, if for no reason other than the big names behind them.</p>
+
+<p>1) <a href="http://code.google.com/p/the-cassandra-project/">"The Cassandra Project" by Facebook</a>. This is a structured p2p storage system, roughly along the lines of Google's <a href="http://labs.google.com/papers/bigtable.html">Bigtable</a>, Amazon's <a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html">Dynamo</a>, and Apache <a href="http://hadoop.apache.org/hbase/">HBase</a>. HBase is open-source but embryonic, while Bigtable/Dynamo are proprietary. It's nice to see another open-sourced option in this space.</p>
+
+<p>A nice summary of the initial open-sourced code: <a href="http://amiest-devblog.blogspot.com/2008/07/cassandra-source-on-google-code.html">Amie Street Dev Blog: Cassandra source on Google Code</a></p>
+
+<p>2) <a href="http://graphite.wikidot.com/">"Graphite" by Orbitz</a> is a "highly scalable real-time graphing system". It began life using RRD as its back-end, but Orbitz decided to rewrite a new storage engine from scratch for better scalability. Their <a href="http://graphite.wikidot.com/faq">FAQ page</a> says the graphs are "very real-time", and their current production system can handle "approximately 160,000 distinct metrics per minute" on a two-server cluster.</p>
+
+

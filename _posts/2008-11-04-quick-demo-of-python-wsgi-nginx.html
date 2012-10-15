@@ -1,0 +1,42 @@
+---
+layout: post
+title: Quick demo of Python + WSGI + Nginx
+published: 1
+categories:
+  - Python
+  - Web/Tech
+  - WebDev
+---
+<p>At Daylife, we're running a whole lotta Python code inside Apache using mod_python. This works great so long as each request can be processed quickly, and you don't need your Python processes to keep much of anything in RAM.</p>
+
+<p>However, any real web app inevitably needs to break those rules, at which point you start to venture into a world of increasing pain. Thus arises a need for alternatives to our cozy, familiar, tried-and-true mod_python.</p>
+
+<p>I've set up Lighttpd before, but this time I decided to try <a href="http://nginx.net/">Nginx</a>. (It's pronounced "engine x")</p>
+
+<p>Here's a quick demo recipe for running two standalone Python FastCGI+WSGI servers that listen on Unix domain sockets, and configuring Nginx to load-balance between them. This config allows you to run more than one Python VM, but not need N VMs to handle N concurrent requests. It also allows you to restart VMs individually with no service downtime.</p>
+
+<p>On CentOS x86_64, enable the <a href="http://fedoraproject.org/wiki/EPEL">EPEL</a> repo and <code>"sudo yum install python-flup nginx"</code></p>
+
+<p>Download the two files in this directory:</p>
+
+<p><a href="http://code.google.com/p/p16blog/source/browse/#svn/trunk/python_nginx">Google Code – p16blog – python_nginx</a></p>
+
+<p><code>"cp nginx.conf /etc/nginx"</code>.
+Then: <code>/etc/init.d/nginx restart</code></p>
+
+<p>Start one Python FastCGI server (you downloaded this file above, right?)</p>
+
+<p><code>python hello_flup.py -n 1 &amp;</code></p>
+
+<p>See that this creates a socket file in <code>/tmp</code>. Now hit any URL on your server, which is listening on port 88. Example: <a href="http://localhost:88/foo">http://localhost:88/foo</a></p>
+
+<p>Start a second server: </p>
+
+<p><code>python hello_flup.py -n 2 &amp;</code></p>
+
+<p>Hit port 88 again. Hit refresh a few times. You should see the PID it reports alternating between two values. Woo, it's round-robining requests between those two servers! Now kill one server. You should see no interruption in service, but the PID value will no longer alternate between values.</p>
+
+<p>Very nice. Now we can upgrade Python code on our server without interrupting service, or needing to restart Nginx itself. Possibly handy if you're running an API service. :)</p>
+
+<p>Final note: you probably want as many VMs running as you have CPUs in your host. Eg. 4 VMs on a 4-way box. This allows you to avoid bottlenecking on the Python GIL.</p>
+

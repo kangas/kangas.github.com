@@ -1,0 +1,41 @@
+---
+layout: post
+title: Supercomputing for the masses&#58; Nvidia CUDA
+published: 1
+categories:
+  - Python
+  - Search
+  - Web/Tech
+---
+<p>This is a post I should have written two weeks ago, but I've been lazy. (Or busy...)</p>
+
+<p>I went to a seminar by Nvidia about <a href="http://www.nvidia.com/object/cuda_what_is.html">CUDA</a>, which is a framework for writing apps to run directly on an Nvidia GPU. Not just graphics apps, either. Nvidia GPUs are massively parallel -- up to 128 hardware threads -- and you can write arbitrary C code to run on it.</p>
+
+<p>The seminar was part of a financial technology conference, so they had a third-party app provider which naturally was building <a href="http://www.hanweckassoc.com/products.html">solutions</a> on CUDA. They said they were seeing a 50x speedup (one Nvidia GPU versus one Intel CPU core) when running their compute-heavy applications.</p>
+
+<p>I came home and immediately installed their <a href="http://www.nvidia.com/object/cuda_get.html">CUDA SDK</a> for Mac OS X on my MacBook Pro. To my surprise, it ran with minimal hassle (*), and I was promptly playing with particle field and liquid simulations. But my Mac doesn't have enough VRAM to run some of the more intensive demos. (MonteCarlo, BlackScholes)</p>
+
+<p>(*) The only real tweak necessary was: "<code>export DYLD_LIBRARY_PATH=/usr/local/cuda/lib</code>"</p>
+
+<p>Takeaways:</p>
+
+<ul>
+<li>It's a powerful parallel-programming model, that generates code for the GPU <em>or</em> the host CPU</li>
+<li>You can start developing with commodity Nvidia GPUs, even in laptops.</li>
+<li>You can scale up to higher-end solutions - up to 4 128-thread GPUs per "host" system</li>
+</ul>
+
+<p>One thing CUDA doesn't provide is a way to manage and process massive datasets. The cards have somewhat limited memory, and you have to write an app that runs on the host and feeds the card with data. For search applications like topic clustering -- which I'd like to use this for -- CUDA alone doesn't provide an answer.</p>
+
+<p>Perhaps it would make sense eventually to use Hadoop plus CUDA -- write your map/reduce tasks in CUDA, and rely on Hadoop to distribute data around a cluster of Nvidia-accelerated boxes?</p>
+
+<p>Two spiffy related projects:</p>
+
+<ul>
+<li><a href="http://pypi.python.org/pypi/pycuda">pycuda</a> Python wrapper for Nvidia CUDA</li>
+<li>Mac OS X 10.6 "Snow Leopard" is slated to ship with <a href="http://en.wikipedia.org/wiki/OpenCL">OpenCL</a>, roughly a version of CUDA that works on multiple GPU architectures</li>
+</ul>
+
+<p>Special thanks to <a href="http://www.RichHecker.com/">Rich Hecker</a> for posting a heads-up about the CUDA seminar to the <a href="http://newtech.meetup.com/1/">NY-newtech</a> list.</p>
+
+

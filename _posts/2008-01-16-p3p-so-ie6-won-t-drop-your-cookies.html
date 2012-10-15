@@ -1,0 +1,46 @@
+---
+layout: post
+title: P3P so IE6+ Won't Drop Your Cookies
+published: 1
+category:
+  - WebDev
+---
+<p>Yesterday, my primary client IM'd me with a panicked message. He had discovered that users were unable to log in or register on his website – "sessions and captcha failure", as he put it – if the browser was IE6 or IE7 in "Medium High" privacy mode.</p>
+
+<p>Considering that the site has been live for 5 months, it's no fun discovering this only <em>now</em>. Surely the VP was panicked too. How many users have we lost to this, without even knowing it?</p>
+
+<p>Initially I suspected a simple error in cookie-setting logic. Maybe it was intermittent, not related to IE at all? But a little bit of Googling revealed that IE6+ explicitly rejects cookies under certain conditions, and this is proportional to the "Privacy Level" setting.</p>
+
+<ul>
+<li><a href="http://support.microsoft.com/kb/283185/EN-US/">MSFT: How to Manage Cookies in Internet Explorer 6</a></li>
+<li><a href="http://www.oreillynet.com/pub/a/javascript/2002/10/04/p3p.html">O'Reilly: Help! IE6 Is Blocking My Cookies</a></li>
+</ul>
+
+<p>It turns out that IE6 added support for a <a href="http://www.w3.org/TR/P3P/">W3C official "recommendation"</a> called <a href="http://en.wikipedia.org/wiki/P3P">Platform for Privacy Preferences</a>. It's a protocol allowing websites to declare their intended use of information they collect about browsing users. It was officially recommended on April 16, 2002.</p>
+
+<p>Specifically, IE6/IE7 looks for the following:</p>
+
+<ul>
+<li>"<code>/w3c/p3p.xml</code>" – the "policy reference" file, which points to...</li>
+<li>The "policy file", an XML file declaring in machine-readable form how you intend to use personal data</li>
+<li>"<code>P3P:</code>" HTTP header to declare a "compact policy" (summary of full policy)</li>
+</ul>
+
+<p>When configured for "Medium High Privacy", IE6 <a href="http://support.microsoft.com/kb/283185/EN-US/">blocks first-party cookies</a> IFF you don't specify a compact policy, or if your compact policy says "I'm going to contact you without your consent" (spam, etc). Under "High Privacy", IE6 <em>blocks all cookies</em> when there's no compact policy defined.</p>
+
+<p>If you want Internet Explorer to <strong>NOT reject your site's cookies, under any conditions</strong>, do the following:</p>
+
+<ul>
+<li>First, have a human-readable policy statement on your website. Or at least figure out roughly what you would say, if you had one.</li>
+<li>Use a <a href="http://www.p3ptoolbox.org/tools/resources1.shtml">P3P policy generator</a> to translate your plain English statement into the P3P policy language. I used the <a href="http://alphaworks.ibm.com/tech/p3peditor">IBM one</a>.</li>
+<li>Ensure that your statement specifies <strong>personal contact information is opt-in</strong>. IE6 will discard your cookies otherwise.</li>
+<li>Also make sure it passes the <a href="http://www.w3.org/P3P/validator/">validator</a></li>
+</ul>
+
+<p>Then save, push the "policy"/"policy reference" files to <code>/w3c</code> on your webserver. Also tweak your server config to return a "<code>P3P:</code>" header with your generated "compact policy" ("CP") string</p>
+
+<p>I'm glad I learned this, but P3P doesn't seem to accomplish much in the way of protecting users' privacy. It mainly seems like a hassle for legit web developers, and <strong>a speed-bump for real web criminals</strong>. Really, if a website wanted to screw with IE users, they'd just send 'em a trojan/virus and be done with it.</p>
+
+<p><em>PS: Interestingly... <a href="http://www.yahoo.com/">Yahoo!</a> returns a P3P header and has a full policy defined. <a href="http://www.google.com/">Google</a>, <a href="http://www.myspace.com/">MySpace</a>, and <a href="http://www.youtube.com/">YouTube</a> have neither the "P3P" header nor "<code>/w3c/p3p.xml</code>" policies on their sites.</em> "<code>curl -I http://www.yahoo.com/</code>" to see for yourself.</p>
+
+

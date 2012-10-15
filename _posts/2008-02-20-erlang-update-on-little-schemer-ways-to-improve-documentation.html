@@ -1,0 +1,25 @@
+---
+layout: post
+title: Erlang&#58; Update on "Little Schemer", ways to improve documentation
+published: 1
+categories:
+  - Code
+  - Erlang
+---
+<p>For those of you tuning in for Erlang news...</p>
+
+<p>I'm still <em>slowly</em> posting updates to my <a href="http://p16blog.googlecode.com/svn/trunk/learning_erlang/little.erl">"Little Schemer" in Erlang</a> code. It's roughly complete, save for Chapter 10, which implements an interpreter for a Scheme-like language. I've also added numerous great enhancements suggested by readers like you. :-) If I missed anything, please let me know!</p>
+
+<p>I also got a very nice personal email from Joe Armstrong, who encouraged me to think bigger and turn this into a real book, not just a companion to the original text. He suggested that I contact the original publisher and see if they'd be interested in a rewrite. While this is very gratifying to hear :-) – and I may indeed contact MIT Press – I'm somewhat more interested in self-publishing.</p>
+
+<p>Mark Pilgrim's approach for <a href="http://diveintopython.org/">"Dive Into Python"</a> would probably be my model. He wrote it in DocBook XML, published to the web, solicited lots of feedback... and wound up with an acclaimed introductory text, translated into multiple languages and published by Apress in a <a href="http://www.amazon.com/exec/obidos/ASIN/1590593561/ref%3Dnosim/diveintomark20">dead-trees version</a>. So not only is he now a bona-fide author, it truly helps grow the Python community worldwide, and he never has to worry about his work gathering dust due to an apathetic copyright owner – it's GPL'd!</p>
+
+<p><a href="http://joelonsoftware.com/BuytheBooks.html">Joel On Software</a> would be another famous example of self-publishing done right.</p>
+
+<p>(Contrast with Armstrong's earlier book, "Concurrent Programming in Erlang", now out of print. Only the first half of the book is <a href="http://erlang.org/download.html">downloadable</a>. Prentice Hall still owns the copyright.)</p>
+
+<p>I've also been causing a <a href="http://erlang.org/pipermail/erlang-questions/2008-February/032779.html">small stink on erlang-questions</a>. Stemming from the above thinking, I wanted to find out how the online Erlang manual gets assembled and where the source-code lives. Sadly, the answer is: it's not public yet.</p>
+
+<p>I think the Erlang team keeps everything in a ClearCase repository – which they're surely loath to discard, because they've used it forever. But ClearCase simply can't be exposed as a "public" repository in the way that CVS/SVN/git can. Sadly, until they cross this divide, the process will be <a href="http://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar">more cathedral than bazaar</a>.</p>
+
+

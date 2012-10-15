@@ -1,0 +1,21 @@
+---
+layout: post
+title: '"disco", a new map-reduce framework - in erlang+python'
+published: 1
+categories:
+  - Erlang
+  - Python
+  - Scalable
+  - Web/Tech
+---
+<p>Woo! Another alternative to <a href="http://wiki.apache.org/lucene-hadoop/">Hadoop</a> crawls out of Nokia Labs:</p>
+
+<p><a href="http://discoproject.org/">Disco - discoproject.org</a></p>
+
+<p>It's yet another <a href="http://en.wikipedia.org/wiki/MapReduce">Map-Reduce framework</a>. This time the core is written in Erlang, and tasks are implemented in Python. Data transfer between nodes happens simply via HTTP.</p>
+
+<p>There's no DFS implemented at all yet. It seems intended to run on Amazon EC2, where you'd just use S3 as your data store.</p>
+
+<p>This feels like it might be a good fit for our needs, since <a href="http://daylife.com/">we're</a> a Python shop, and I'd rather hack on Erlang than Java. :)</p>
+
+

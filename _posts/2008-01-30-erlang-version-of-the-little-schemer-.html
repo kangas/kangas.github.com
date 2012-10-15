@@ -1,0 +1,31 @@
+---
+layout: post
+title: Erlang version of "The Little Schemer"
+published: 1
+categories:
+  - Code
+  - Erlang
+---
+<p>I am learning Erlang, because I want to build web applications that scale easily. Before I can capitalize on Erlang's awesome concurrency support, I need to get comfortable with simpler stuff, like procedural programming.</p>
+
+<p>Erlang at its core is a <em>functional language</em>. As I've <a href="/p16/2008/01/learning-erlang.html">noted previously</a>, this means doing things quite differently than in C, Java, or PHP. Recursion is the key building block in functional languages. Thinking in terms of <em>recursive functions</em> is essential for getting anywhere in these languages.</p>
+
+<p>I learned the basics of recursion in college, but it's not a tool I'd instinctively reach for. My attitude was, "Why bother?" Using recursion in most languages just makes the code harder to read, and purely-functional languages like Haskell are for writing PhD dissertations, not getting real work done. </p>
+
+<p>Or so it seemed. Now I'm learning Erlang, and I want to get real work done.</p>
+
+<p><a href="http://www.amazon.com/exec/obidos/ASIN/0262560992/p16prapro-20">"The Little Schemer", by Friedman and Felleisen</a> has a reputation as a short, sweet book that <strong>teaches you to think recursively</strong>. That's quite an accomplishment for an approachable book. First published in 1974 as "The Little LISPer", it now uses Scheme, a modern variant of LISP.</p>
+
+<p>I've seen this book translated into other languages before, notably Douglas Crockford's <a href="http://www.crockford.com/javascript/little.html">The Little JavaScripter</a>. Since Erlang is a natively functional language, the rewrite should be even easier. Nobody else appears to have published such a thing.</p>
+
+<p>So, here's my take. Call it <strong>"The Little Erlanger"</strong>, if you will. :-)</p>
+
+<p><a href="http://p16blog.googlecode.com/svn/trunk/learning_erlang/little.erl">Google Code: little.erl</a> </p>
+
+<p>I'm including unit tests, to prove that the code works. I also try to use "Good Erlang Style", as best I understand it. Sometimes Erlang offers a shortcut to the recursion-based approach, and I point to these in comments as "Erlang Preferred".</p>
+
+<p>Currently complete through Chapter 7, will finish the rest ASAP.</p>
+
+<p>PS: Erlang fans, I'm sure there is much room for improvement in my style. Any and all comments are welcome! </p>
+
+

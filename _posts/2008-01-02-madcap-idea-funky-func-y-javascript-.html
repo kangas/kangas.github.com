@@ -1,0 +1,50 @@
+---
+layout: post
+title: Madcap idea&#58; "Funky (func-y) JavaScript"
+published: 1
+categories:
+  - Erlang
+  - Madcap
+---
+<p>I haven't exactly finished setting this blog up yet, but an idea just occurred to me, and rather than jot it in my paper notebook, I thought I'd post it publicly for y'all to see.</p>
+
+<p>This is probably a harebrained idea. I'm sure I'll see some flaws in it tomorrow, and you will see them even sooner.</p>
+
+<p>Madcap idea: "Funky JavaScript" (FunkyJS):</p>
+
+<ol>
+<li>Define a <strong>strictly functional subset of JavaScript</strong> – code which, if translated, could run within the <a href="http://erlang.org/">Erlang</a> virtual machine. (<em>Key restriction: no mutable variables. All variables must be write-once, as in Erlang.</em>)</li>
+<li>Build a JavaScript parser in Erlang</li>
+<li>Try to generate Erlang bytecodes and run the result!</li>
+</ol>
+
+<p>I'm calling it "Funky" because it's func -> functional. And weird too.</p>
+
+<p>Yeah, I'm demented to even consider this. But it falls right at the intersection of a whole bunch of problem domains that I've been looking at:</p>
+
+<ol>
+<li><a href="http://couchdb.org">CouchDb</a> is implemented in Erlang, and uses JavaScript as its query language. It uses Mozilla Spidermonkey as its JS engine, but as you can see on their dev blog, this has its downsides.</li>
+<li><a href="http://erlang.org/">Erlang</a> holds incredible promise for running distributed server-side programs. But the language is <em>very</em> different from anything else in the standard web-development toolbox (Perl,PHP,C,Java,etc).</li>
+<li>AJAX is a cross-platform UI juggernaut. If you want to make a web-connected application that "runs everywhere", and can overcome the cross-platform quirks, you build it on AJAX. It works today on iPhone and <a href="http://maemo.org/">Maemo</a> and <a href="http://code.google.com/android/">Android</a>. Need I say more?</li>
+<li>JavaScript is the "J" in "AJAX". It's everywhere.</li>
+</ol>
+
+<p>Erlang is very capable on the server. JavaScript is ubiquitous on the client side. If we could bridge this gap, perhaps some really interesting apps could emerge?</p>
+
+<p>How about a multiplayer game like Scrabble or Battleship that works as a Facebook app, on iPhone, and every desktop web browser? How about massively-multiplayer, with tournaments and ranking and embedded advertising too? (ala <a href="http://www.popcap.com/">Bejeweled</a> or <a href="http://pogo.com/">Pogo.com</a>)</p>
+
+<p>I'm talking about taking web technologies far beyond the level of "interaction" that we're accustomed to.</p>
+
+<p>As <a href="http://www.crockford.com/">Douglas Crockford</a> says, "JavaScript is a sloppy language, but inside it there is an elegant, better language." His <a href="http://javascript.crockford.com/little.html">Little JavaScripter</a> even demonstrates how to rewrite all functions from "The Little Schemer" into JavaScript. Thus, it should be possible to do the inverse (JS->Scheme) given a strict enough subset of JS.</p>
+
+<p>Erlang is a functional language like Scheme, so hopefully JS->Erlang would be similarly possible.</p>
+
+<p>I'm glossing over lots of details of how a "dynamic, run-anywhere, multiuser app" would work, of course. Think of it as an AJAX app with a critical enhancement: write code that runs on the client <em>or</em> on the server, however it suits your problem, with no performance penalty. Make the client as smart or dumb as necessary, and re-balance the client/server workload as you go. Possibly even on-the-fly.</p>
+
+<p>Imagine Google Docs Spreadsheet doing simple calculations on the client, heavy calculations on the server. Maybe you push more calculations to the server when the client has a weak CPU like iPhone.</p>
+
+<p>Ok, this is pretty sci-fi. But tools like <a href="http://developer.apple.com/tools/dashcode/">Dashcode</a> make AJAX programming awfully accessible. Is the rest so far-fetched?</p>
+
+<p>Last note: Douglas Crockford's <a href="http://www.jslint.com/lint.html">JSLint</a> is a JavaScript syntax checker and validator, in JavaScript. His <a href="http://javascript.crockford.com/tdop/tdop.html">Pratt Parser</a> may be a darn good model to follow.</p>
+
+

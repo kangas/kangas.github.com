@@ -1,0 +1,32 @@
+---
+layout: post
+title: Things I want to ask the Google App Engine team
+published: 1
+categories:
+  - Google
+  - WebDev
+---
+<p>Notes for the Google "hack-a-thon" tomorrow. Hopefully I'll get some interesting responses!</p>
+
+<p>1) <strong>Image upload/resizing</strong>: db.BlobProperty will store it, but resizing not possible?</p>
+
+<ul>
+<li><a href="http://code.google.com/p/googleappengine/issues/detail?id=38&amp;colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary">Issue 38 "   Please add Python Image Library (PIL)"</a></li>
+<li><strong>Picasa GData API</strong> - is this a viable solution?</li>
+</ul>
+
+<p>2) <strong>Full-text Search</strong>: Doable, but limited. See google.appengine.ext.search.SearchableModel</p>
+
+<ul>
+<li><a href="http://groups.google.com/group/google-appengine/browse_thread/thread/ba4a4a4ccefb96c5/0e3f0ab63c4c8afd">Thread: Indexing Large Chunks of Text for Search | Google Groups</a></li>
+<li><strong>Google Base API</strong> - is this a viable solution for a listings site?</li>
+<li>"We don't accept auction items without a fixed price on Google Base" (<a href="http://base.google.com/support/bin/answer.py?answer=82048&amp;topic=9331">from Google Base Help</a>). Bummer...</li>
+</ul>
+
+<p>3) <strong>Schema updates</strong>: how is this handled? It appears that there's zero support for schema migration/rollback. Something like RoR's <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingMigrations">ActiveRecordMigration</a> would rock.</p>
+
+<p>4) <strong>How about a "Certified Developer" program?</strong> Give small-time developers an incentive to learn your technology stack, and an imprimatur when they do, to help them bring other parties to your platform faster. (think: <a href="http://en.wikipedia.org/wiki/Microsoft_Certified_Professional">MCSE</a> and similar programs by <a href="http://en.wikipedia.org/wiki/Sun_Certified_Professional">Sun</a>, <a href="http://en.wikipedia.org/wiki/Cisco_Career_Certifications">Cisco</a>, <a href="http://en.wikipedia.org/wiki/Oracle_Certification_Program">Oracle</a>, <a href="http://en.wikipedia.org/wiki/Apple_Certification">Apple</a>, <a href="http://en.wikipedia.org/wiki/Red_Hat_Certification_Program">Red Hat</a>, <a href="http://en.wikipedia.org/wiki/Ubuntu_Certified_Professional">Ubuntu</a>)</p>
+
+<p>5) <strong>Batch processing?</strong> Will we get Python MapReduce with access to the App Engine (BigTable) datastore? :-)</p>
+
+

@@ -1,0 +1,32 @@
+---
+layout: post
+title: Erlang documentation poorly SEO'd?
+published: 1
+category:
+  - Erlang
+---
+<p>In the brief time that I've been watching the Erlang world, I've noticed several cases of people saying:</p>
+
+<ul>
+<li>I have a question about X, which should be covered in the Erlang documentation</li>
+<li>I searched Google, but it didn't return anything</li>
+<li>I found the answer in the manual later, or someone pointed out the location.</li>
+</ul>
+
+<p>The only example I have handy is <a href="http://www.erlang.org/pipermail/erlang-questions/2008-January/032451.html">Russell King's post on Jan 22</a>, where he says, "<em>For whatever reason</em>, google search didn't give me anything."</p>
+
+<p>In my experience, when a search on an obviously-distinctive term fails to yield an obviously-canonical website, the problem is usually that the website is <strong>poorly search-engine optimized</strong>.</p>
+
+<p>Years ago, I worked at HotJobs.com. When I started, if you went to Google and typed "hotjobs", the results showed our homepage, our discussion boards... and <strong>nothing else</strong>. Why? Because the most valuable part of our website – the job listings – was not accessible by clicking links. Google couldn't crawl our most-valuable content, and thus it didn't appear in Google.</p>
+
+<p>We eventually, collectively, came to our senses and fixed this bug. Shortly thereafter, we started getting a lot more traffic courtesy of Google, and everyone wondered why we hadn't done this sooner.</p>
+
+<p>I suspect that something similar may be true for the <a href="http://erlang.org/doc/">Erlang HTML documentation</a>. It's not hidden behind a search form, but it may be poorly browsable by a web crawler: frames are involved, links seem deeply-nested, possibly lacking helpful keywords. Long documents also tend to be penalized by search engines. Maybe something else is amiss.</p>
+
+<p>Consider for a moment the PHP documentation, which has one page per function call. Choppy, but quickly browsable, with short and descriptive URLs. <a href="http://www.google.com/search?q=print_r">Search for "print_r" on Google</a> and you get the PHP manual as result #1.</p>
+
+<p>Searching for a similarly-obvious keyword in Erlang yields strange results. <a href="http://www.google.com/search?q=io%3Aformat">"io:format"</a> returns www.erlang.org/doc/man/io.html as the top result, but <a href="http://www.google.com/search?q=erlang+io%3Aformat">"erlang io:format"</a> drops it to 2nd place. Wierd!</p>
+
+<p>That's as far as I've investigated. <a href="http://www.google.com/support/webmasters/bin/answer.py?answer=35769">Google's Webmaster Guidelines</a> are a good starting point for further investigation...</p>
+
+

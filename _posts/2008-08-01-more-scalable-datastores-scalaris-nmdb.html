@@ -1,0 +1,40 @@
+---
+layout: post
+title: More scalable datastores&#58; Scalaris, nmdb
+published: 1
+categories:
+  - Erlang
+  - WebDev
+---
+<p><a href="http://code.google.com/p/scalaris/">Scalaris</a> is a new distributed key-value datastore, recently announced and code posted to Google Code.</p>
+
+<p>It was announced and <a href="http://video.google.com/videoplay?docid=6981137233069932108&amp;q=erlang%202008&amp;hl=en">demoed at Erlang eXchange 2008</a>. Joe Armstrong (father of Erlang) later wrote on his blog: <a href="http://armstrongonsoftware.blogspot.com/2008/06/itching-my-programming-nerve.html">"my gut feeling is that what Alexander Reinefeld showed us will be the first killer application in Erlang"</a></p>
+
+<p>Armstrong's summary:</p>
+
+<ol>
+<li>They make a peer to peer system based on the chord algorithm</li>
+<li>They added a replication later using the paxos algorithm</li>
+<li>They added a transaction layer</li>
+<li>The injected the wikipedia</li>
+<li><p>It went faster that the existing wikipedia</p>
+
+<p>"Applied to Wikipedia, Scalaris serves 2,500 transactions per second with just 16 CPUs, which is better than the public Wikipedia."</p></li>
+</ol>
+
+<p>One downside: it's presently a memory-only store, so it's quite useless for permanent data storage. (One full power-outage in a data center will obliterate all of your data. Doh!)</p>
+
+<p><a href="http://blitiri.com.ar/p/nmdb/">nmdb</a> is yet another distributed key-value store, this one implemented in ~5000 lines of C and using <a href="http://qdbm.sf.net/">qdbm</a> or <a href="http://www.oracle.com/database/berkeley-db/">berkeley db</a> as the back-end store. It looks simple and stable. Major limitations: it's distributed, not replicated, so is more like a persistent memcache (like <a href="http://meta.wikimedia.org/wiki/Tugela_Cache">Tugela</a> and <a href="http://code.google.com/p/memcachedb/">memcachedb</a>). There is also a hard 64kB size limit on key+value packets.</p>
+
+<p>As you might have guessed from my articles on this topic -- I am looking a "Bigtable-like" datastore that I can recommend to clients. My criteria are:</p>
+
+<ul>
+<li>It must be reasonably mature: losing data isn't an option!</li>
+<li>It must be open-source, and the project must "have legs" (not abandoned)</li>
+<li>It must be fast enough to serve as the primary datastore behind a web service API</li>
+<li>It must store a few terabytes of data on &lt; 5 machines (not in RAM!), and be able to grow capacity by just adding more machines</li>
+</ul>
+
+<p>I still haven't found anything I'd recommend. Dang it guys, finish one of these projects! :) Maybe I'll have to build something custom on top of <a href="http://www.danga.com/mogilefs/">MogileFS</a> from scratch after all?</p>
+
+

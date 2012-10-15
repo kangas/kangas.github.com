@@ -1,0 +1,49 @@
+---
+layout: post
+title: OSX Leopard DNS issues, and a workaround
+published: 1
+category:
+  - Mac
+---
+<p>Another tip for MacBook/MacBook Pro owners running OS X 10.5 "Leopard"...</p>
+
+<h2>Problem Description</h2>
+
+<p>For a little while, I've noticed what seemed to be occasional problems with Safari, the default web browser under OS X. I'll be browsing the web at home via WiFi when <strong>suddenly Safari says "You are not connected to the Internet" – but only for a certain (random) website</strong>. Other websites are still usable. My IM client suffers no interruption while this is happening, nor does Mail.app.</p>
+
+<p>(Actually, I've seen wierdness with Mail.app too, where it fails to validate the SSL certificate for one or more of my email accounts. This may/may not be related... keep reading.)</p>
+
+<p>This happens when I'm at home, using Time Warner cable via WiFI (Buffalo WHR-G125 re-flashed with DD-WRT Linux). I've seen TWC flakiness in the past, but my other Linux box running <a href="http://oss.oetiker.ch/smokeping/">Smokeping</a> wasn't showing network dropouts. Hmm.</p>
+
+<h2>Background</h2>
+
+<p>I went a-Googling yesterday, and found that I'm not the only person seeing these issues...</p>
+
+<p><a href="http://chroniclesofwynn.wordpress.com/2007/11/08/safari-internet-connection-problems-in-leopard/">Safari Internet Connection Problems in Leopard « The Chronicles of Wynn
+</a> – He doesn't describe the problem, but does suggest a solution: turning off IPV6 support. Ok, but why?</p>
+
+<p><a href="http://www.onedigitallife.com/2007/11/03/leopard-internet-connection-problems/">Leopard Internet Connection Problems « One Digital Life</a> – Nice side-by-side screenshot of "flaky Safari 3" and "working Firefox 2". "<em>The error listed in Safari’s Activity Window is, “Can’t find host”</em>"</p>
+
+<p><a href="http://blog.jungledisk.com/2007/10/31/leopard-dns-issues-and-work-around/">Leopard DNS Issues (and work-around) « JungleDisk</a> – A discussion of technical issues. DNS behavior <em>did</em> change in Leopard, but the culprit is misconfigured DNS servers? Umm...</p>
+
+<h2>How I'm dealing with it (so far)</h2>
+
+<p>1) Turn off IPV6</p>
+
+<ul>
+<li>System Preferences » Network » Advanced » TCP/IP</li>
+<li>"Configure IPV6: Off"</li>
+</ul>
+
+<p>Frankly, I cannot tell if this is having any effect at all.</p>
+
+<p>2) Create a shell script called "<code>dns-flush</code>":</p>
+
+<p><code>#!/bin/sh</code> <br />
+<code>dscacheutil -flushcache</code></p>
+
+<p>Make that file executable (<code>chmod u+x dns-flush</code>) and run it (<code>./dns-flush</code>) whenever Safari flakes out.</p>
+
+<p><strong>This is helping!</strong> Safari immediately stops acting stupid and comes back to life. Unfortunately, I find that I need to run this once every few hours. Does anybody else have a better answer?</p>
+
+

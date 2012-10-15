@@ -1,0 +1,44 @@
+---
+layout: post
+title: Hackathon pics, Installing Kismet on Nokia N810
+published: 1
+categories:
+  - Maemo
+  - Mobile
+  - Toys
+---
+<p>Ack, I can't believe it's nearly a week since the Google App Engine hack-a-thon and I still haven't written about it. The event itself was fun, informative, and most importantly yielded a t-shirt and an App Engine account. :)</p>
+
+<p><a href="http://picasaweb.google.com/appengine.hackathon/GoogleAppEngineHackathon">Picasa: photos from GoogleAppEngineHackathon</a></p>
+
+<p>I'm vaguely visible in the front row in <a href="http://picasaweb.google.com/appengine.hackathon/GoogleAppEngineHackathon/photo#5198015899766481986">this</a> photo. (behind the red laptop)</p>
+
+<p>More about the hack-a-thon in another post. But I really need to get better at just blurting out what's on my mind, so to avoid week-long lulls on this blog such as you just experienced. :)</p>
+
+<h2>Installing Kismet on Nokia N810</h2>
+
+<ul>
+<li><a href="http://www.kismetwireless.net/">Kismet</a> - A Wi-Fi "network auditing" tool, aka passive sniffer</li>
+<li><a href="http://en.wikipedia.org/wiki/Nokia_N810">Nokia N810</a> - a Linux-based "internet tablet". Pocket-sized, has Wi-Fi and GPS</li>
+</ul>
+
+<h1 style="vertical-align:middle"><img src="http://www.p16blog.com/p16//Kismet.png" alt="Kismet.png" border="0" width="183" height="75" /> + <img src="http://www.p16blog.com/p16//Nokia810.png" alt="Nokia810.png" border="0" width="127" height="100" /></h1>
+
+<p>I've always wanted to put these two great tastes together. Last night I finally figured out how, courtesy of <a href="http://www.internettablettalk.com/forums/showthread.php?t=1322&amp;page=11">Internet Tablet Talk forums</a>:</p>
+
+<ul>
+<li>Activate <a href="http://maemo.org/community/wiki/ApplicationManagerRedPillMode/">RedPillMode</a> in Application Manager, this allows you to see system libraries</li>
+<li>install libraries: <code>ncurses-base</code> and <code>tcpdump</code></li>
+<li>install "becomeroot" from <a href="http://gronmayer.com/it/">gronmayer.com/it</a> so "<code>sudo gainroot</code>" works on the local xterm</li>
+<li>Install <a href="http://www.zdez.org/nokismet-0.0.1a.deb">tz1's .deb build of kismet</a></li>
+<li>in an xterm, do:
+<ul>
+<li><code>sudo gainroot</code></li>
+<li><code>mkdir /media/mmc11/kismet</code></li>
+<li><code>kismet</code></li>
+</ul></li>
+</ul>
+
+<p>And it worked! Thanks <a href="http://www.zdez.org/">tz1</a>!</p>
+
+

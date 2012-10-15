@@ -1,0 +1,28 @@
+---
+layout: post
+title: Reply to Viktor, re "Tokyo Cabinet + Tyrant"
+published: 1
+categories:
+  - Datastore
+  - Erlang
+  - Scalable
+---
+<p>Viktor Sovietov left an <a href="/p16/2008/08/more-scalable-datastores-scalaris-nmdb.html#comment-1249892720">interesting comment</a> on my <a href="/p16/2008/08/more-scalable-datastores-scalaris-nmdb.html">&quot;More scalable datastores&quot;</a> post the other day:</p>
+
+<blockquote><em>Why do not try Tokyo Cabinet + Tyrant as per node storage? In combination with Scalaris and tcerl it could work quite well, I think.
+<br />
+Also, using distributed filesystem can be an option as well. I even prefer this approach, because it gives much better performance.</em></blockquote>
+
+<p>Well, I am currently using a distributed filesystem: <a href="http://www.danga.com/mogilefs/">MogileFS</a>. The best thing about Mogile is that it&#39;s simple and it scales. But it stores metadata in MySQL so this is ultimately a bottleneck. Also, in Mogile, each record is just a separate file on a filesystem; fetching one record requires (1-2) HTTP connections.</p>
+
+<p>Right now I&#39;m using Mogile to store images (photos). This fits nicely with the one-record = one-file paradigm. But I have another dataset which is ~95 GB and growing, append-only; record size is typically 1 kB. If I store these directly as individual files on a large disk, I&#39;m going to get killed by the block size in most filesystems.</p>
+
+<p>(I presently have 6x 700 GB data drives/box times 4 boxes, using <code>ext3</code>, block/fragment size is 4096. So I&#39;d waste 75% of my disk if I&#39;m writing 1kB files.)</p>
+
+<p><a href="http://tokyocabinet.sourceforge.net/">Tokyo Cabinet</a> is an interesting suggestion. At first glance, it seems an interesting alternative to <code>BerkeleyDB</code> -- promising performance close to <code>cdb</code> . <a href="http://tokyocabinet.sourceforge.net/tyrantdoc/">Tyrant</a> looks like a straightforward network interface to a DB instance, too.</p>
+
+<p>I&#39;m sure it&#39;s possible to weave these together with <a href="http://code.google.com/p/tcerl/">tcerl</a> and make a new persistent backend for Scalaris. But would it be a net win? I am not interested in forking Scalaris; I&#39;d rather see the Scalaris folks express an interest in developing a persistent backend, and giving the nod to this as a potential solution.</p>
+
+<p>To me, an open-source project is only useful if, three years after I&#39;ve launched a system, there is still a community of people talking about that project and available to help support it. I want to launch a system, then hand it off to someone else for the maintenance phase. If the project doesn&#39;t have &quot;legs&quot;, then I will the only person who can answer those support calls down the road, and I&#39;d like to avoid that. :)</p>
+
+

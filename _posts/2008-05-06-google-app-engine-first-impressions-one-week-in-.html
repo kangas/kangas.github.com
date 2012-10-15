@@ -1,0 +1,46 @@
+---
+layout: post
+title: Google App Engine - First Impressions (one week in)
+published: 1
+categories:
+  - Google
+  - WebDev
+---
+<p>One week ago I said I was <a href="/p16/2008/04/diving-head-fir.html">diving head-first into Google App Engine development</a>. 'Tis true! I've now gotten my feet and head thoroughly wet. :) Here are my first hands-on impressions of App Engine as a web programming model.</p>
+
+<p>I am porting an app that was already half-written in <a href="http://kohanaphp.com/">KohanaPHP</a> and <a href="http://incubator.apache.org/couchdb/">CouchDB</a> with a custom, half-baked modeling layer. Roughly speaking, it is a Craigslist clone: an online classified listing site. Nothing revolutionary, this kind of site has been built a hundred times. I have a specific niche market in mind, and I hope to launch it soon.</p>
+
+<p>Since Craigslist is arguably the simplest useful, high-traffic site on the internet, this seemed like a reasonable test of App Engine as a hosting platform. To put it another way -- if I can't recreate Craigslist on this platform, what good is it? :)</p>
+
+<p>My initial port to App Engine took just one day of furious hacking. I made progress very quickly, thanks to the <a href="http://code.google.com/appengine/docs/">documentation</a> and <a href="http://code.google.com/p/google-app-engine-samples/">code samples</a>. Within 24 hrs I had my Kohana templates converted to Django templates, my core entities defined, authentication working, and some bare-bones request handlers written using the provided "webapp" framework.</p>
+
+<p>The main stumbling blocks I encountered at this point were:</p>
+
+<ul>
+<li>URLs with path arguments: "/profile/mattkangas" instead of "/profile?id=mattkangas"</li>
+<li>Forms and form validation</li>
+<li>Relationships between entities?</li>
+<li>Use the "webapp" framework, or scrap it for full Django?</li>
+<li>How should I arrange my code?</li>
+</ul>
+
+<p>As I dug further into the examples I was disappointed. It seems like the examples were "crowdsourced" from within Google. None are really written in a "best practices" style. They're mostly just quick demos. One doesn't even work due to missing packages. ("muvmuv" -- still broken in SVN, afaik.)</p>
+
+<p>There were some bright spots. "cccwiki" showed me that path arguments are feasible -- but it's not mentioned in the online docs. "tasks" is a collaborative task-list app that uses entity relations elegantly. "django_example" shows how to run the Django dispatcher and middleware -- which I'm steering clear of for right now.</p>
+
+<p>I'm still wrapping my head around Django <a href="http://www.djangoproject.com/documentation/newforms/">forms</a> and <a href="http://www.djangoproject.com/documentation/modelforms/">modelforms</a>. I'm annoyed that templates add <a href="http://code.djangoproject.com/ticket/2594">silly excess newlines</a> to HTML output. But <a href="http://www.djangoproject.com/documentation/form_preview/">form_preview</a> looks so darn cool... maybe cool enough to overlook those other warts.</p>
+
+<p><strong>However... the single best thing that I've found so far</strong> is "Ritveld", a demo app written by none other than Guido van Rossum.</p>
+
+<ul>
+<li><a href="http://googleappengine.blogspot.com/2008/04/posted-by-ken-ashcraft-software.html">Blog post: An Open Source App: Rietveld Code Review Tool</a></li>
+<li><a href="http://code.google.com/p/rietveld/source/browse">"Rietveld" source code</a></li>
+<li><a href="http://codereview.appspot.com/">codereview.appspot.com</a> -- live demo</li>
+</ul>
+
+<p>(<a href="http://www.python.org/~guido/">Guido</a> is the <a href="http://en.wikipedia.org/wiki/Guido_van_Rossum">father of Python</a>, if ya don't know...)</p>
+
+<p>The Makefile alone was a revelation and time-saver. The app seems to be written in immaculate, canonical style, as I'd expect from GvR. Looks like I found a demo worth emulating. :)</p>
+
+<p>I am going to the Google "Hack-a-thon" in NYC tomorrow, will report back afterward!</p>
+

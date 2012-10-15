@@ -1,0 +1,23 @@
+---
+layout: post
+title: Learning Erlang - Matrix iteration
+published: 1
+categories:
+  - Code
+  - Erlang
+---
+<p>I've added more examples to my Erlang "how to count" demo:</p>
+
+<p><a href="http://p16blog.googlecode.com/svn/trunk/learning_erlang/demo_counting.erl">demo_counting.erl</a></p>
+
+<p>You'd think 10 examples of "counting to ten" would get pretty boring. But there's a surprising variety of options available. I'm a now big fan of "<code>lists:foldl()</code>" – it applies a function <em>and</em> lets you pass state between iteration steps. Most types of 1-D iteration can be done easily using "<code>foldl()</code>", without recursion. Don't overlook this function!</p>
+
+<p>After figuring out list iteration, the next logical question is... how can I traverse a matrix? In C-style languages, you use a doubly-nested "<code>for()</code>" loop. Perhaps you may <a href="http://en.wikipedia.org/wiki/Loop_unrolling">unroll the loop</a> if you have special logic for the first/last elements, etc.</p>
+
+<p>The prospect of writing <em>doubly-nested recursive functions</em> seemed downright nasty. But after a night's rest, I realized I wasn't constrained by C's one-dimensional "<code>for()</code>" anymore. I can write a single recursive function that traverses both axes of the matrix.</p>
+
+<p>At that moment, I started to understand why functional guys always talk about "<em>making their own control abstractions</em>" (<a href="http://www.amazon.com/exec/obidos/ASIN/193435600X/p16prapro-20">Armstrong, pp46</a>). Who cares? Now I do, and it's not very hard.</p>
+
+<p>Check out my <a href="http://p16blog.googlecode.com/svn/trunk/learning_erlang/demo_counting.erl"><code>count_matrix4()</code> example</a>. It's pretty clean, I think. Can we do better?</p>
+
+
