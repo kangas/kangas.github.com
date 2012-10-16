@@ -1,2 +1,3 @@
 _site
 .rbenv-version
+.DS_Store

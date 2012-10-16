@@ -12,7 +12,7 @@ future:      true
 lsi:         false
 pygments:    false
 markdown:    maruku
-permalink:   date
+permalink:   /:year/:month/:title.html
 
 maruku:
   use_tex:    false
@@ -38,4 +38,3 @@ kramdown:
     coderay_tab_width: 4
     coderay_bold_every: 10
     coderay_css: style
-
