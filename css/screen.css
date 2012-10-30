@@ -67,7 +67,7 @@ ul.posts {
   }
 
   ul.posts span {
-    color: #aaa;
+    color: #999;
     font-family: Monaco, "Courier New", monospace;
     font-size: 80%;
   }
@@ -148,8 +148,18 @@ ul.posts {
 /*
 /*****************************************************************************/
 
-#post {
+#lead {
+}
 
+  #lead hr {
+    border: 0;
+    margin: .2em 0;
+    background-color: #999;
+    color: #888;
+    height: 2px;
+  }
+
+#post {
 }
 
   /* standard */
@@ -189,6 +199,7 @@ ul.posts {
   }
 
 #related {
+    border-top: 4px solid #eee;
   margin-top: 2em;
 }
 

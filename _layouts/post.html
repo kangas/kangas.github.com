@@ -1,18 +1,31 @@
 ---
 layout: default
 ---
-<div id="date">{{ page.date | date_to_string }}</div>
-<hr />
-<h1>{{ page.title }}</h1>
+<div id="lead">
+  <div id="date">{{ page.date | date_to_string }}</div>
+  <hr />
+  <h1>{{ page.title }}</h1>
+</div>
+
 <div id="post">
 {{ content }}
 </div>
 
 <div id="related">
-  <h2>Related Posts</h2>
-  <ul class="posts">
-    {% for post in site.related_posts limit:3 %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+    {% if page.next.url %}
+      <p>
+        <strong>&#x2B06; Newer:</strong>
+        <a href="{{page.next.url}}">{{page.next.title}}</a>
+      </p>
+    {% endif %}
+	  {% if page.previous.url %}
+        <p>
+          <strong>&#x2B07; Older:</strong>
+          <a href="{{page.previous.url}}">{{page.previous.title}}</a>
+        </p>
+    {% endif %}
+    <p>
+      <strong>&#x21EA;</strong>
+      <a class="extra" href="/">Home</a>
+    </p>
 </div>
